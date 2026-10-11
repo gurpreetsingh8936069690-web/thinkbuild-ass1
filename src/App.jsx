@@ -8,7 +8,10 @@ import ContactPage from './pages/ContactPage';
 import CareersPage from './pages/CareersPage';
 import TestsPage from './pages/TestsPage';
 import ClubPage from './pages/ClubPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import NotFoundPage from './pages/NotFoundPage';
+import WhatsAppFloatingButton from './components/common/WhatsAppFloatingButton';
 
 // ScrollToTop component to reset viewport on route change
 function ScrollToTop() {
@@ -29,7 +32,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 relative">
         <Header />
         <main className="flex-1">
           <Routes>
@@ -39,10 +42,13 @@ export default function App() {
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/tests" element={<TestsPage />} />
             <Route path="/club" element={<ClubPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />
+        <WhatsAppFloatingButton />
       </div>
     </BrowserRouter>
   );

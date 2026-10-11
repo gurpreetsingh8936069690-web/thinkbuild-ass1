@@ -27,6 +27,7 @@ export default function Header() {
     { name: 'Courses', path: '/courses' },
     { name: 'Tests & Diagnostic', path: '/tests' },
     { name: 'Speaking Club', path: '/club' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Careers', path: '/careers' },
     { name: 'Contact Us', path: '/contact' }
   ];
