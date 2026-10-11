@@ -8,6 +8,7 @@ import GallerySection from '../components/home/GallerySection';
 import CourseCard from '../components/courses/CourseCard';
 import SectionHeading from '../components/common/SectionHeading';
 import Button from '../components/common/Button';
+import FAQSection from '../components/home/FAQSection';
 import { adultCourses } from '../data/coursesData';
 
 export default function HomePage() {
@@ -60,7 +61,10 @@ export default function HomePage() {
       {/* 6. Authentic Student Testimonials */}
       <TestimonialsSection />
 
-      {/* 7. Final Action Callout Banner */}
+      {/* 7. Frequently Asked Questions */}
+      <FAQSection />
+
+      {/* 8. Final Action Callout Banner */}
       <section className="py-16 sm:py-20 bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-teal-300 border border-white/20 inline-block">

@@ -140,6 +140,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/blog" className="text-slate-400 hover:text-white transition-colors">
+                  Academy Blog & Guides
+                </Link>
+              </li>
+              <li>
                 <Link to="/careers" className="text-slate-400 hover:text-white transition-colors">
                   Career Opportunities
                 </Link>
