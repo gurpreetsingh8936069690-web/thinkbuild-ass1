@@ -1,0 +1,25 @@
+// Authentic Gallery Images from The Consistent Academy
+export const galleryData = [
+  { id: 1, src: "/assets/academy/gallery_v1.png", title: "Interactive Speaking Session", category: "Classroom" },
+  { id: 2, src: "/assets/academy/gallery_v2.png", title: "Public Speaking Workshop", category: "Speaking" },
+  { id: 3, src: "/assets/academy/gallery_v3.png", title: "Collaborative Learning", category: "Classroom" },
+  { id: 4, src: "/assets/academy/gallery_v4.png", title: "Student Presentations", category: "Presentations" },
+  { id: 5, src: "/assets/academy/gallery_v5.png", title: "Confidence Building Activity", category: "Workshops" },
+  { id: 6, src: "/assets/academy/gallery_v6.png", title: "IELTS Strategy Session", category: "IELTS" },
+  { id: 7, src: "/assets/academy/gallery_v7.jpeg", title: "Academy Group Milestone", category: "Community" },
+  { id: 8, src: "/assets/academy/gallery_v8.jpeg", title: "Student Discussion Circle", category: "Speaking" },
+  { id: 9, src: "/assets/academy/gallery_v9.jpeg", title: "Interactive Classroom Moment", category: "Classroom" },
+  { id: 10, src: "/assets/academy/gallery_v10.jpeg", title: "Campus Speaking Drive", category: "Events" },
+  { id: 11, src: "/assets/academy/gallery_v11.jpeg", title: "Mentorship in Action", category: "Mentorship" },
+  { id: 12, src: "/assets/academy/gallery_v12.jpeg", title: "Speech Practice Round", category: "Speaking" },
+  { id: 13, src: "/assets/academy/gallery_v13.jpeg", title: "Student Achievement Celebration", category: "Milestones" },
+  { id: 14, src: "/assets/academy/gallery_v14.jpeg", title: "Classroom Engagement", category: "Classroom" },
+  { id: 15, src: "/assets/academy/gallery_v15.jpeg", title: "Focused Practice Session", category: "Workshops" },
+  { id: 16, src: "/assets/academy/gallery_v16.jpeg", title: "Public Speaking Stage Experience", category: "Events" },
+  { id: 17, src: "/assets/academy/gallery_v17.jpeg", title: "One-on-One Feedback", category: "Mentorship" },
+  { id: 18, src: "/assets/academy/gallery_v18.jpeg", title: "Communication Skills Seminar", category: "Seminars" },
+  { id: 19, src: "/assets/academy/gallery_v19.jpeg", title: "Group Learning Dynamics", category: "Classroom" },
+  { id: 20, src: "/assets/academy/gallery_v20.jpeg", title: "Student Felicitation Ceremony", category: "Milestones" },
+  { id: 21, src: "/assets/academy/gallery_v21.jpeg", title: "Public Speaking Showcase", category: "Events" },
+  { id: 22, src: "/assets/academy/gallery_v22.jpeg", title: "Graduation & Band Score Success", category: "Success" }
+];
