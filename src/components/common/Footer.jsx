@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, ExternalLink, Instagram, Linkedin, MessageCircle, Heart, Award } from 'lucide-react';
+import { Phone, Mail, MapPin, ExternalLink, Heart, Award } from 'lucide-react';
+import { InstagramIcon, LinkedinIcon, WhatsAppIcon } from './BrandIcons';
 import { contactData } from '../../data/contactData';
 
 export default function Footer() {
@@ -50,7 +51,7 @@ export default function Footer() {
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 hover:text-white flex items-center justify-center text-slate-400 transition-colors"
                 aria-label="Instagram profile"
               >
-                <Instagram className="w-4 h-4" />
+                <InstagramIcon className="w-4 h-4" />
               </a>
               <a
                 href={contactData.socials[1].url}
@@ -59,7 +60,7 @@ export default function Footer() {
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 hover:text-white flex items-center justify-center text-slate-400 transition-colors"
                 aria-label="LinkedIn page"
               >
-                <Linkedin className="w-4 h-4" />
+                <LinkedinIcon className="w-4 h-4" />
               </a>
               <a
                 href={contactData.socials[2].url}
@@ -68,7 +69,7 @@ export default function Footer() {
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-teal-600 hover:text-white flex items-center justify-center text-slate-400 transition-colors"
                 aria-label="WhatsApp Community"
               >
-                <MessageCircle className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
               </a>
             </div>
           </div>
