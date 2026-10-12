@@ -200,25 +200,37 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar with Mandatory Developer Credit */}
+        {/* Bottom Bar with ThinkBuild Designer & Developer Credit */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>
             © {currentYear} {contactData.academyName}. All rights reserved.
           </p>
 
-          {/* Mandatory ThinkBuild credit */}
-          <div className="flex items-center gap-1.5">
-            <span>Website developed by</span>
-            <a
-              href="https://www.thinkbuild.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-400 hover:text-brand-300 font-semibold underline underline-offset-4 inline-flex items-center gap-1 transition-colors"
-            >
-              <span>ThinkBuild</span>
-              <ExternalLink className="w-3 h-3 inline-block" />
-            </a>
-          </div>
+          {/* Designed and Developed by Think build */}
+          <a
+            href="https://www.thinkbuild.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 hover:border-brand-500/50 transition-all duration-200 shadow-sm"
+            aria-label="Designed and developed by Think build (opens in a new tab)"
+          >
+            <span className="text-slate-400 text-xs font-normal">Designed and developed by</span>
+            <div className="flex items-center gap-1.5">
+              <img
+                src="/assets/academy/thinkbuild-logo.png"
+                alt="Think Build Logo"
+                className="h-5 w-auto object-contain rounded-xs transition-transform duration-200 group-hover:scale-105"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                }}
+              />
+              <span className="font-bold text-white group-hover:text-brand-300 transition-colors">
+                Think build
+              </span>
+              <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-brand-300 transition-colors ml-0.5" />
+            </div>
+          </a>
         </div>
       </div>
     </footer>
