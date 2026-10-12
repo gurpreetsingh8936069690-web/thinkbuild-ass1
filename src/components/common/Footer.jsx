@@ -125,6 +125,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/#founder" className="text-slate-400 hover:text-white transition-colors">
+                  Meet the Founder (Vidya Wankhade)
+                </Link>
+              </li>
+              <li>
                 <Link to="/courses" className="text-slate-400 hover:text-white transition-colors">
                   Course Catalogue
                 </Link>

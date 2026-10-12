@@ -74,6 +74,58 @@ export default function CoursesPage() {
             <CourseCard key={course.id} course={course} />
           ))}
         </div>
+
+        {/* Academic Director & Founder Mentorship Callout */}
+        <div className="mt-16 rounded-3xl bg-gradient-to-br from-brand-50 via-white to-purple-50/60 border border-brand-200/80 p-6 sm:p-10 shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-3 flex justify-center">
+              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden ring-4 ring-brand-500/20 shadow-xl bg-white">
+                <img
+                  src="/assets/academy/gallery_vidya.png"
+                  alt="Vidya Wankhade - Founder of The Consistent Academy"
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/assets/academy/logo2.png';
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="md:col-span-9 space-y-4 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-brand-600" />
+                <span>Mentorship & Academic Leadership</span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                Curriculum Designed & Guided by <span className="text-gradient">Vidya Wankhade</span>
+              </h3>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Author, IELTS full course & Interview Coach, and Founder of The Consistent Academy. Over 19 years of teaching excellence, British Council Certified IELTS Master Trainer, UGC NET qualified, and certified in TOEFL, PET, and TESOL/TEFL. Author of three published works including <em>“Cakewalk IELTS”</em>, <em>“Reading Detective”</em>, and <em>“101 Management Books You'll Never Read But Should”</em>.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
+                <Button
+                  to="/#founder"
+                  variant="primary"
+                  size="sm"
+                  icon={ArrowRight}
+                >
+                  Meet Founder, Journey & Books
+                </Button>
+                <Button
+                  to="/contact"
+                  variant="outline"
+                  size="sm"
+                >
+                  Book 1-on-1 Guidance
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Kids & Young Learners Section */}

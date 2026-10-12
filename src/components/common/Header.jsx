@@ -25,6 +25,7 @@ export default function Header() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses' },
+    { name: 'Founder', path: '/#founder' },
     { name: 'Tests & Diagnostic', path: '/tests' },
     { name: 'Speaking Club', path: '/club' },
     { name: 'Blog', path: '/blog' },
@@ -32,8 +33,22 @@ export default function Header() {
     { name: 'Contact Us', path: '/contact' }
   ];
 
+  const handleNavClick = (e, path) => {
+    if (path === '/#founder') {
+      if (location.pathname === '/') {
+        e.preventDefault();
+        const el = document.getElementById('founder');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', '/#founder');
+        }
+      }
+    }
+  };
+
   const isActive = (path) => {
-    if (path === '/') return location.pathname === '/';
+    if (path === '/') return location.pathname === '/' && !location.hash;
+    if (path === '/#founder') return location.hash === '#founder';
     return location.pathname.startsWith(path);
   };
 
@@ -111,6 +126,7 @@ export default function Header() {
                 <Link
                   key={link.path}
                   to={link.path}
+                  onClick={(e) => handleNavClick(e, link.path)}
                   className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150 ${
                     active
                       ? 'text-brand-700 bg-brand-50 shadow-sm'
@@ -157,6 +173,10 @@ export default function Header() {
                   <Link
                     key={link.path}
                     to={link.path}
+                    onClick={(e) => {
+                      handleNavClick(e, link.path);
+                      setMobileMenuOpen(false);
+                    }}
                     className={`block px-4 py-2.5 rounded-xl text-base font-semibold transition-colors ${
                       active
                         ? 'text-brand-700 bg-brand-50 font-bold'

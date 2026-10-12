@@ -34,4 +34,71 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-gradient {
+    background-image: linear-gradient(135deg, #7C3AED, #A855F7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-teal {
+    background-image: linear-gradient(135deg, #6C63FF, #0D9488);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 3D Flip Card Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Neomorphic Soft Shadows */
+  .shadow-neu {
+    box-shadow: 6px 6px 16px rgba(147, 51, 234, 0.08), -6px -6px 16px rgba(255, 255, 255, 0.9);
+  }
+
+  .shadow-neu-lg {
+    box-shadow: 10px 10px 24px rgba(147, 51, 234, 0.12), -10px -10px 24px rgba(255, 255, 255, 0.95);
+  }
+
+  .shadow-neu-2xl {
+    box-shadow: 16px 16px 36px rgba(147, 51, 234, 0.16), -16px -16px 36px rgba(255, 255, 255, 1);
+  }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+

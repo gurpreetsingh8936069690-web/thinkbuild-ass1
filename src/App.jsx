@@ -13,17 +13,27 @@ import BlogPostPage from './pages/BlogPostPage';
 import NotFoundPage from './pages/NotFoundPage';
 import WhatsAppFloatingButton from './components/common/WhatsAppFloatingButton';
 
-// ScrollToTop component to reset viewport on route change
+// ScrollToTop component to reset viewport or scroll to hash element
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+        return;
+      }
+    }
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth'
     });
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 }

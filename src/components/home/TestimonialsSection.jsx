@@ -1,109 +1,160 @@
-import React, { useState } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight, Award, Globe } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight, Award, Globe, Sparkles } from 'lucide-react';
 import { testimonialsData } from '../../data/testimonialsData';
-import SectionHeading from '../common/SectionHeading';
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const timerRef = useRef(null);
+
+  // Auto-slide every 5000ms matching original website Z4e component
+  useEffect(() => {
+    if (isHovered) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonialsData.length);
+    }, 5000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isHovered, currentIndex]);
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonialsData.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev + 1) % testimonialsData.length);
   };
 
   const activeTestimonial = testimonialsData[currentIndex];
 
   return (
-    <section id="testimonials" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Verified Student Outcomes"
-          title="Stories of Success & Global Achievements"
-          subtitle="Real testimonials from candidates who achieved their required IELTS band scores and unlocked higher studies and careers across Canada, Germany, Australia, and the UK."
-        />
+    <section 
+      id="testimonials" 
+      className="py-20 sm:py-28 bg-gradient-to-b from-brand-50/30 via-purple-50/20 to-brand-50/30 border-b border-slate-100 relative overflow-hidden"
+    >
+      {/* Background Soft Glow Orbs */}
+      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-brand-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header matching Z4e */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <p className="text-brand-600 text-xs sm:text-sm font-bold uppercase tracking-wider mb-2">
+            Testimonials
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Stories of <span className="text-gradient">Success</span>
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-600">
+            Real outcomes from students and working professionals who achieved their target band scores and unlocked higher education and permanent residency abroad.
+          </p>
+        </div>
 
         {/* Featured Testimonial Card */}
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-lg border border-slate-200/80 relative overflow-hidden">
-          <div className="absolute top-6 right-6 text-brand-100 pointer-events-none">
-            <Quote className="w-20 h-20 rotate-12" />
-          </div>
-
-          <div className="relative z-10 space-y-6">
-            {/* Stars & Band Tag */}
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-
+        <div 
+          className="max-w-4xl mx-auto"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className="rounded-3xl bg-gradient-to-br from-brand-50/90 via-white to-purple-50/60 p-8 sm:p-12 shadow-neu border border-brand-200/80 flex flex-col justify-between relative overflow-hidden transition-all duration-300">
+            
+            {/* Top Row: Quote Icon & Badges */}
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <Quote className="w-12 h-12 sm:w-14 sm:h-14 text-brand-600/30 flex-shrink-0" />
+              
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-800 border border-brand-200">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-100 text-brand-900 border border-brand-200">
                   {activeTestimonial.band}
                 </span>
                 <span className="px-3 py-1 rounded-full text-xs font-semibold bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1">
-                  <Globe className="w-3.5 h-3.5" />
-                  {activeTestimonial.destination}
+                  <Globe className="w-3.5 h-3.5 text-teal-600" />
+                  <span>{activeTestimonial.destination}</span>
                 </span>
               </div>
             </div>
 
-            {/* Testimonial Quote */}
-            <p className="text-base sm:text-xl text-slate-700 italic leading-relaxed font-normal">
-              "{activeTestimonial.text}"
-            </p>
+            {/* Testimonial Quote Text */}
+            <div className="space-y-4 my-4">
+              <p className="text-lg sm:text-2xl text-slate-800 italic leading-relaxed font-normal">
+                "{activeTestimonial.text}"
+              </p>
 
-            {/* Author Profile */}
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+              {/* 5 Rating Stars */}
+              <div className="flex gap-1 pt-2">
+                {Array.from({ length: activeTestimonial.rating }).map((_, i) => (
+                  <Star key={i} size={18} className="text-amber-400 fill-amber-400" />
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Row: Student Profile & Slide Controls */}
+            <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h4 className="font-extrabold text-slate-900 text-lg">
+                <p className="font-bold text-lg sm:text-xl text-slate-900">
                   {activeTestimonial.name}
-                </h4>
+                </p>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium">
-                  {activeTestimonial.role} • {activeTestimonial.course}
+                  {activeTestimonial.role}
+                </p>
+                <p className="text-xs sm:text-sm text-brand-600 font-semibold">
+                  {activeTestimonial.course}
                 </p>
               </div>
 
-              {/* Slider Controls */}
-              <div className="flex items-center gap-2">
+              {/* Arrow Buttons */}
+              <div className="flex items-center gap-2 self-end sm:self-center">
                 <button
+                  type="button"
                   onClick={prevSlide}
-                  className="p-2.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 hover:text-brand-700 transition-colors shadow-2xs"
+                  className="p-3 rounded-full border border-slate-200 bg-white hover:bg-brand-50 text-slate-700 hover:text-brand-700 transition-colors shadow-2xs hover:shadow-md"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
+                  type="button"
                   onClick={nextSlide}
-                  className="p-2.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 hover:text-brand-700 transition-colors shadow-2xs"
+                  className="p-3 rounded-full border border-slate-200 bg-white hover:bg-brand-50 text-slate-700 hover:text-brand-700 transition-colors shadow-2xs hover:shadow-md"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
             </div>
+
           </div>
+
+          {/* Pagination Indicators & Student Selector Pills */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto">
+            {testimonialsData.map((item, idx) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setCurrentIndex(idx)}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                  currentIndex === idx
+                    ? 'bg-brand-700 text-white shadow-sm ring-2 ring-brand-700/20 font-bold'
+                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                }`}
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Quick Auto-play Hint */}
+          <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
+            Auto-advancing every 5 seconds • Hover to pause
+          </p>
         </div>
 
-        {/* Thumbnail Dots & Quick Selector */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto">
-          {testimonialsData.map((item, idx) => (
-            <button
-              key={item.id}
-              onClick={() => setCurrentIndex(idx)}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                currentIndex === idx
-                  ? 'bg-brand-700 text-white shadow'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-              }`}
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
       </div>
     </section>
   );

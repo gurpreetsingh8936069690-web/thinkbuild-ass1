@@ -117,22 +117,31 @@ export default function Hero() {
                 <div className="py-5 space-y-3 text-xs sm:text-sm text-slate-600">
                   <div className="flex items-start gap-3">
                     <ShieldCheck className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
-                    <span>British Council Certified IELTS Master Trainer</span>
+                    <span>British Council Certified IELTS Master Trainer & UGC NET Qualified</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <ShieldCheck className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
-                    <span>Author of 'Cakewalk IELTS' & 'The Reading Detective'</span>
+                    <span>Author of 3 Books: 'Cakewalk IELTS', 'The Reading Detective', and '101 Management Books'</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <ShieldCheck className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
-                    <span>Proven Band 7.5+ outcomes for Canada, UK, Germany & Australia</span>
+                    <span>B.Sc, B.Ed, MPM, TOEFL Trainer, PET Trainer & TESOL/TEFL Certified</span>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div className="text-xs text-slate-500">
-                    <span className="font-semibold text-slate-800">In-person & Online:</span> Pune, MH
-                  </div>
+                  <a
+                    href="#founder"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const el = document.getElementById('founder');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-xs font-bold text-brand-700 hover:text-brand-900 underline underline-offset-2 flex items-center gap-1"
+                  >
+                    <span>Meet Founder & Books</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
                   <Button
                     to="/contact"
                     variant="accent"
