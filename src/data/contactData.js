@@ -26,9 +26,9 @@ export const contactData = {
       color: "#0A66C2"
     },
     {
-      name: "WhatsApp Community",
-      handle: "Join Study Community",
-      url: "https://chat.whatsapp.com/Kw2YbntkWMqG66MVI9xSJq?mode=ac_t",
+      name: "WhatsApp",
+      handle: "+91 77091 09830",
+      url: "https://wa.me/917709109830",
       color: "#25D366"
     }
   ]

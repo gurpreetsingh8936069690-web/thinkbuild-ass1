@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Mail, MapPin, Menu, X, ArrowRight, MessageSquareQuote } from 'lucide-react';
+import { Phone, Mail, MapPin, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
 import { contactData } from '../../data/contactData';
 import Button from './Button';
 
@@ -80,15 +80,34 @@ export default function Header() {
             </span>
           </div>
 
+          {/* Prominent ThinkBuild Designer & Developer Badge */}
           <div className="flex items-center gap-3">
             <a
-              href="https://chat.whatsapp.com/Kw2YbntkWMqG66MVI9xSJq?mode=ac_t"
+              href="https://www.thinkbuild.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-teal-300 hover:text-teal-200 font-medium transition-colors"
+              className="group inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 hover:bg-slate-700/90 border border-slate-700 hover:border-brand-500/70 text-slate-300 hover:text-white transition-all duration-200 text-xs shadow-xs"
+              title="Designed and developed by Think build"
+              aria-label="Designed and developed by Think build (opens in new tab)"
             >
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping inline-block"></span>
-              <span>Join WhatsApp Study Community</span>
+              <span className="text-[11px] text-slate-400 group-hover:text-slate-300 transition-colors">
+                Designed & Developed by
+              </span>
+              <div className="flex items-center gap-1.5">
+                <img
+                  src="/assets/academy/thinkbuild-logo.png"
+                  alt="Think Build Logo"
+                  className="h-4 w-auto object-contain rounded-xs transition-transform duration-200 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <span className="font-bold text-teal-300 group-hover:text-teal-200 transition-colors">
+                  Think build
+                </span>
+                <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-teal-200 transition-colors" />
+              </div>
             </a>
           </div>
         </div>
@@ -205,6 +224,25 @@ export default function Header() {
               >
                 <Phone className="w-4 h-4 text-brand-600" />
                 <span>Call: {contactData.phone}</span>
+              </a>
+              <a
+                href="https://www.thinkbuild.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors shadow-xs"
+              >
+                <span className="text-slate-400">Designed & Developed by</span>
+                <img
+                  src="/assets/academy/thinkbuild-logo.png"
+                  alt="Think Build Logo"
+                  className="h-4 w-auto object-contain rounded-xs"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <span className="font-bold text-teal-300">Think build</span>
+                <ExternalLink className="w-3 h-3 text-slate-400" />
               </a>
             </div>
           </div>

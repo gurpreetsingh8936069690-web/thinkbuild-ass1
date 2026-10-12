@@ -11,7 +11,6 @@ import ClubPage from './pages/ClubPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import NotFoundPage from './pages/NotFoundPage';
-import WhatsAppFloatingButton from './components/common/WhatsAppFloatingButton';
 
 // ScrollToTop component to reset viewport or scroll to hash element
 function ScrollToTop() {
@@ -58,7 +57,6 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
-        <WhatsAppFloatingButton />
       </div>
     </BrowserRouter>
   );

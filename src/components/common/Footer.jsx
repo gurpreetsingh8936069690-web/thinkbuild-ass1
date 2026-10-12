@@ -67,7 +67,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-teal-600 hover:text-white flex items-center justify-center text-slate-400 transition-colors"
-                aria-label="WhatsApp Community"
+                aria-label="WhatsApp"
               >
                 <WhatsAppIcon className="w-4 h-4" />
               </a>
