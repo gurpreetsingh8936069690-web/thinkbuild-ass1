@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "name": "The Consistent Academy",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  }
+}
