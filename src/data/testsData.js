@@ -1,4 +1,4 @@
-// Authentic Diagnostic Tests from The Consistent Academy
+// Authentic Practice Tests from The Consistent Academy
 
 export const testsData = {
   leadership: {
@@ -101,7 +101,7 @@ export const testsData = {
   },
   adultsGrammar: {
     id: "adultsGrammar",
-    title: "Advanced English Proficiency Diagnostic",
+    title: "Advanced English Proficiency Test",
     badge: "Adults & Professionals",
     description: "Benchmark your command of advanced English grammar, syntax, idioms, conditionals, and precision phrasing.",
     timeLimit: "12 mins",
@@ -188,7 +188,7 @@ export const testsData = {
     id: "kidsGrammar",
     title: "Young Learners Grammar Quest",
     badge: "Ages 6 - 15 Years",
-    description: "An engaging, friendly English foundations diagnostic evaluating articles, prepositions, tenses, and sentence building.",
+    description: "An engaging, friendly English foundations test evaluating articles, prepositions, tenses, and sentence building.",
     timeLimit: "10 mins",
     totalQuestions: 10,
     questions: [

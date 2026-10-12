@@ -79,7 +79,7 @@ export default function WhyChooseUs() {
                 Not sure where your current English level stands?
               </h3>
               <p className="text-xs sm:text-sm text-brand-100 leading-relaxed">
-                Take our free 12-minute online grammar & diagnostic test or book an individual diagnostic session with our academic advisor.
+                Take our free 12-minute online grammar test or book an individual consultation session with our academic advisor.
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function WhyChooseUs() {
                 size="md"
                 className="w-full justify-center font-bold"
               >
-                Take Diagnostic Test
+                Take Free Test
               </Button>
             </div>
           </div>

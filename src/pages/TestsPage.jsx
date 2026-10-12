@@ -100,13 +100,13 @@ export default function TestsPage() {
       {/* Page Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800 inline-block">
-          Skill Diagnostics
+          Skill Tests
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          English & Leadership Diagnostic Tests
+          English & Leadership Tests
         </h1>
         <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Benchmark your English grammar, test readiness, or managerial style with The Consistent Academy's interactive diagnostics. Instant scoring with tailored course recommendations.
+          Benchmark your English grammar, test readiness, or managerial style with The Consistent Academy's interactive tests. Instant scoring with tailored course recommendations.
         </p>
       </section>
 
@@ -327,7 +327,7 @@ export default function TestsPage() {
                 <div className="space-y-6">
                   <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
-                      Your Diagnostic Score
+                      Your Test Score
                     </span>
                     <div className="text-4xl font-black text-brand-700">
                       {results.score} / {results.total}

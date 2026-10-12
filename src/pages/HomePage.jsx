@@ -92,7 +92,7 @@ export default function HomePage() {
               size="lg"
               className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 hover:text-white"
             >
-              Take Free Diagnostic Test
+              Take Free Practice Test
             </Button>
           </div>
         </div>

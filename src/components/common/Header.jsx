@@ -28,7 +28,7 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'Courses', path: '/courses' },
     { name: 'Founder', path: '/#founder' },
-    { name: 'Tests & Diagnostic', path: '/tests' },
+    { name: 'Tests', path: '/tests' },
     { name: 'Speaking Club', path: '/club' },
     { name: 'Blog', path: '/blog' },
     { name: 'Careers', path: '/careers' },

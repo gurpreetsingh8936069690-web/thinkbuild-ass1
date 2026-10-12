@@ -53,7 +53,7 @@ export default function Hero() {
                 icon={Compass}
                 className="w-full sm:w-auto"
               >
-                Free Diagnostic Test
+                Free Practice Test
               </Button>
               <Button
                 to="/contact"
