@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Mail, MapPin, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MapPin, Menu, X, ArrowRight, ExternalLink, Sun, Moon } from 'lucide-react';
 import { contactData } from '../../data/contactData';
+import { useTheme } from '../../context/ThemeContext';
 import Button from './Button';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme, isDark } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white transition-shadow duration-300">
+    <header className="sticky top-0 z-50 w-full bg-white dark:bg-slate-900 transition-colors duration-200">
       {/* Top Notification / Contact Bar */}
       <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -114,7 +116,7 @@ export default function Header() {
       </div>
 
       {/* Main Navbar */}
-      <nav className={`w-full bg-white transition-all duration-200 ${scrolled ? 'shadow-md py-2.5' : 'border-b border-slate-100 py-3.5'}`}>
+      <nav className={`w-full bg-white dark:bg-slate-900 transition-all duration-200 ${scrolled ? 'shadow-md py-2.5' : 'border-b border-slate-100 dark:border-slate-800 py-3.5'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg p-1">
@@ -128,10 +130,10 @@ export default function Header() {
               }}
             />
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-none group-hover:text-brand-700 transition-colors">
+              <span className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-none group-hover:text-brand-700 dark:group-hover:text-brand-400 transition-colors">
                 The Consistent Academy
               </span>
-              <span className="text-[10px] sm:text-xs font-semibold text-brand-600 tracking-wider uppercase mt-0.5">
+              <span className="text-[10px] sm:text-xs font-semibold text-brand-600 dark:text-brand-400 tracking-wider uppercase mt-0.5">
                 IELTS & English Mastery
               </span>
             </div>
@@ -148,8 +150,8 @@ export default function Header() {
                   onClick={(e) => handleNavClick(e, link.path)}
                   className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150 ${
                     active
-                      ? 'text-brand-700 bg-brand-50 shadow-sm'
-                      : 'text-slate-600 hover:text-brand-700 hover:bg-slate-50'
+                      ? 'text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 shadow-sm'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-brand-700 dark:hover:text-brand-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
                   {link.name}
@@ -158,33 +160,51 @@ export default function Header() {
             })}
           </div>
 
-          {/* Desktop Consultation Button */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button
-              to="/contact"
-              variant="primary"
-              size="sm"
-              icon={ArrowRight}
+          {/* Right Controls: Exactly ONE Theme Toggle Button + Desktop CTA + Mobile Menu */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* The ONLY Light / Dark Mode Toggle Button on the entire website */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-200 shadow-2xs hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+              title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              Enquire Now
-            </Button>
-          </div>
+              {isDark ? (
+                <Sun className="w-4 h-4 text-amber-400 transition-transform duration-300 rotate-0 hover:rotate-90" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-700 transition-transform duration-300 -rotate-12 hover:rotate-0" />
+              )}
+            </button>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
-            aria-expanded={mobileMenuOpen}
-            aria-label="Toggle navigation menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            {/* Desktop Action: Enquire Now Button */}
+            <div className="hidden lg:block">
+              <Button
+                to="/contact"
+                variant="primary"
+                size="sm"
+                icon={ArrowRight}
+              >
+                Enquire Now
+              </Button>
+            </div>
+
+            {/* Mobile Navigation Menu Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              aria-expanded={mobileMenuOpen}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-2 shadow-xl animate-fadeIn">
+          <div className="lg:hidden border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-fadeIn">
             <div className="space-y-1">
               {navLinks.map((link) => {
                 const active = isActive(link.path);
@@ -198,8 +218,8 @@ export default function Header() {
                     }}
                     className={`block px-4 py-2.5 rounded-xl text-base font-semibold transition-colors ${
                       active
-                        ? 'text-brand-700 bg-brand-50 font-bold'
-                        : 'text-slate-700 hover:text-brand-700 hover:bg-slate-50'
+                        ? 'text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 font-bold'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-brand-700 dark:hover:text-brand-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                     }`}
                   >
                     {link.name}
@@ -208,7 +228,7 @@ export default function Header() {
               })}
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2.5">
               <Button
                 to="/contact"
                 variant="primary"
@@ -220,16 +240,16 @@ export default function Header() {
               </Button>
               <a
                 href={contactData.phoneHref}
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               >
-                <Phone className="w-4 h-4 text-brand-600" />
+                <Phone className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>Call: {contactData.phone}</span>
               </a>
               <a
                 href="https://www.thinkbuild.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors shadow-xs"
+                className="flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors shadow-xs"
               >
                 <span className="text-slate-400">Designed & Developed by</span>
                 <img

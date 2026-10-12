@@ -99,13 +99,13 @@ export default function TestsPage() {
     <div className="py-10 sm:py-16 space-y-12">
       {/* Page Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-800 border border-brand-200 inline-block">
+        <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800 inline-block">
           Skill Diagnostics
         </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           English & Leadership Diagnostic Tests
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
           Benchmark your English grammar, test readiness, or managerial style with The Consistent Academy's interactive diagnostics. Instant scoring with tailored course recommendations.
         </p>
       </section>
@@ -145,20 +145,20 @@ export default function TestsPage() {
                 onClick={() => switchTest(item.key)}
                 className={`p-5 rounded-2xl border text-left transition-all ${
                   isCurrent
-                    ? 'border-brand-600 bg-white ring-2 ring-brand-500 shadow-sm'
-                    : 'border-slate-200 bg-white hover:border-slate-300'
+                    ? 'border-brand-600 dark:border-brand-400 bg-white dark:bg-slate-900 ring-2 ring-brand-500 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                     {item.badge}
                   </span>
-                  <Icon className={`w-4 h-4 ${isCurrent ? 'text-brand-600' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isCurrent ? 'text-brand-600 dark:text-brand-400' : 'text-slate-400'}`} />
                 </div>
-                <h3 className="font-bold text-slate-900 text-base mb-1">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base mb-1">
                   {item.title}
                 </h3>
-                <p className="text-xs text-slate-500 line-clamp-2">
+                <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
                   {item.desc}
                 </p>
               </button>
@@ -169,28 +169,28 @@ export default function TestsPage() {
 
       {/* Main Test Runner Area */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-10 shadow-sm">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 p-6 sm:p-10 shadow-sm transition-colors">
           {!testCompleted ? (
             <div className="space-y-8">
               {/* Progress & Header */}
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold uppercase text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full">
+                    <span className="text-xs font-bold uppercase text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800">
                       {activeTest.badge}
                     </span>
                     <span className="text-xs text-slate-400">
                       Question {currentQuestionIndex + 1} of {questions.length}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                     <Clock className="w-3.5 h-3.5" />
                     <span>Est. {activeTest.timeLimit}</span>
                   </div>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
                   <div
                     className="bg-brand-600 h-full transition-all duration-300"
                     style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
@@ -201,11 +201,11 @@ export default function TestsPage() {
               {/* Question Statement */}
               <div className="space-y-2">
                 {currentQuestion.section && (
-                  <span className="text-xs font-bold uppercase tracking-wider text-teal-700 block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 block">
                     Domain: {currentQuestion.section}
                   </span>
                 )}
-                <h3 className="text-lg sm:text-2xl font-bold text-slate-900 leading-snug">
+                <h3 className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white leading-snug">
                   {currentQuestion.question}
                 </h3>
               </div>
@@ -224,14 +224,14 @@ export default function TestsPage() {
                       onClick={() => handleSelectOption(currentQuestion.id, idx, optStyle)}
                       className={`w-full p-4 rounded-xl border text-left text-sm transition-all flex items-start gap-3.5 ${
                         isSelected
-                          ? 'border-brand-600 bg-brand-50/70 text-brand-950 ring-1 ring-brand-500 font-semibold shadow-xs'
-                          : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
+                          ? 'border-brand-600 dark:border-brand-400 bg-brand-50/70 dark:bg-brand-950/60 text-brand-950 dark:text-white ring-1 ring-brand-500 font-semibold shadow-xs'
+                          : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                       }`}
                     >
                       <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${
                         isSelected 
                           ? 'bg-brand-600 text-white' 
-                          : 'bg-slate-100 text-slate-600'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
                       }`}>
                         {String.fromCharCode(65 + idx)}
                       </span>

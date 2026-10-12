@@ -40,17 +40,17 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="py-20 sm:py-28 bg-white border-b border-slate-100 overflow-hidden">
+    <section id="gallery" className="py-20 sm:py-28 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 overflow-hidden transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading matching original website */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/80 text-teal-800 text-xs font-bold uppercase tracking-wider mb-4">
-            <Camera className="w-3.5 h-3.5 text-teal-600" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/80 border border-teal-200/80 dark:border-teal-800 text-teal-800 dark:text-teal-300 text-xs font-bold uppercase tracking-wider mb-4">
+            <Camera className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
             <span>Authentic Academy Moments</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Learning in{' '}
             <span 
               className="bg-clip-text text-transparent"
@@ -60,7 +60,7 @@ export default function GallerySection() {
             </span>
           </h2>
           
-          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             Real classroom moments, interactive speech debates, diagnostic feedback, and student milestone celebrations at The Consistent Academy.
           </p>
         </div>
@@ -77,8 +77,8 @@ export default function GallerySection() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
                   activeCategory === cat
-                    ? 'bg-brand-700 text-white shadow-sm ring-2 ring-brand-700/20'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-brand-700 dark:bg-brand-600 text-white shadow-sm ring-2 ring-brand-700/20'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
               >
                 {cat}
@@ -88,14 +88,14 @@ export default function GallerySection() {
 
           {/* Reel / Grid Switch & Navigation */}
           <div className="flex items-center gap-2">
-            <div className="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200/80">
+            <div className="bg-slate-100 dark:bg-slate-800 p-1 rounded-xl flex items-center border border-slate-200/80 dark:border-slate-700">
               <button
                 type="button"
                 onClick={() => setViewMode('reel')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   viewMode === 'reel'
-                    ? 'bg-white text-brand-700 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-700 text-brand-700 dark:text-brand-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
                 title="Panoramic Stream View"
               >
@@ -107,8 +107,8 @@ export default function GallerySection() {
                 onClick={() => setViewMode('grid')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   viewMode === 'grid'
-                    ? 'bg-white text-brand-700 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-700 text-brand-700 dark:text-brand-300 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
                 title="Photo Grid View"
               >
@@ -122,7 +122,7 @@ export default function GallerySection() {
                 <button
                   type="button"
                   onClick={() => scrollReel('left')}
-                  className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs"
+                  className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-2xs"
                   aria-label="Scroll left"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -130,7 +130,7 @@ export default function GallerySection() {
                 <button
                   type="button"
                   onClick={() => scrollReel('right')}
-                  className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs"
+                  className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-2xs"
                   aria-label="Scroll right"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function GallerySection() {
               <div
                 key={item.id}
                 onClick={() => setSelectedImageIndex(idx)}
-                className="group relative h-48 sm:h-56 md:h-64 rounded-2xl overflow-hidden bg-slate-100 cursor-pointer border border-slate-200/80 shadow-xs hover:shadow-xl hover:border-brand-500/50 transition-all duration-300"
+                className="group relative h-48 sm:h-56 md:h-64 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 cursor-pointer border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-xl hover:border-brand-500/50 transition-all duration-300"
               >
                 <img
                   src={item.src}

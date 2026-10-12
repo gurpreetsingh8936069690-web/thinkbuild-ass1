@@ -16,20 +16,20 @@ export default function SectionHeading({
         <div className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 ${
           light 
             ? 'bg-white/10 text-brand-200 border border-white/20' 
-            : 'bg-brand-50 text-brand-700 border border-brand-200/60'
+            : 'bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200/60 dark:border-brand-800'
         }`}>
           <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
           {badge}
         </div>
       )}
       <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight ${
-        light ? 'text-white' : 'text-slate-900'
+        light ? 'text-white' : 'text-slate-900 dark:text-white'
       }`}>
         {title}
       </h2>
       {subtitle && (
         <p className={`mt-4 text-base sm:text-lg leading-relaxed ${
-          light ? 'text-slate-200' : 'text-slate-600'
+          light ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300'
         }`}>
           {subtitle}
         </p>

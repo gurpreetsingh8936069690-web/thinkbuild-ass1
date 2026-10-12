@@ -34,7 +34,7 @@ export default function FAQSection() {
   ];
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white border-b border-slate-100">
+    <section id="faq" className="py-16 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="Clear Answers"
@@ -48,7 +48,7 @@ export default function FAQSection() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/50 transition-colors"
+                className="rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50/50 dark:bg-slate-900 transition-colors"
               >
                 <button
                   type="button"
@@ -56,18 +56,18 @@ export default function FAQSection() {
                   className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-bold text-slate-900 text-base sm:text-lg">
+                  <span className="font-bold text-slate-900 dark:text-white text-base sm:text-lg">
                     {faq.question}
                   </span>
-                  <div className={`w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center flex-shrink-0 text-slate-500 transition-transform duration-200 ${
-                    isOpen ? 'rotate-180 bg-brand-50 text-brand-700 border-brand-200' : ''
+                  <div className={`w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center flex-shrink-0 text-slate-500 dark:text-slate-300 transition-transform duration-200 ${
+                    isOpen ? 'rotate-180 bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border-brand-200 dark:border-brand-800' : ''
                   }`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-200/60 pt-4 bg-white animate-fadeIn">
+                  <div className="px-5 sm:px-6 pb-6 pt-0 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-800 pt-4 bg-white dark:bg-slate-900/90 animate-fadeIn">
                     <p>{faq.answer}</p>
                   </div>
                 )}
@@ -77,12 +77,12 @@ export default function FAQSection() {
         </div>
 
         {/* Still Have Questions CTA */}
-        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-brand-50 border border-brand-200/80 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-brand-50 dark:bg-slate-900 border border-brand-200/80 dark:border-slate-800 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6 transition-colors">
           <div>
-            <h4 className="text-lg font-bold text-slate-900">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white">
               Have a specific question about your target university or migration timeline?
             </h4>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
               Speak directly with Vidya Wankhade and our counseling team in Pune.
             </p>
           </div>

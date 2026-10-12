@@ -170,9 +170,20 @@ export default function Footer() {
             <ul className="space-y-3.5 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-400 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-300">
-                  {contactData.displayAddress}, India
-                </span>
+                <div>
+                  <span className="text-slate-300 block font-medium">
+                    {contactData.address}
+                  </span>
+                  <a
+                    href={contactData.googleMapsDirectionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-teal-400 hover:text-teal-300 mt-1 font-semibold"
+                  >
+                    <span>View on Google Maps</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-brand-400 flex-shrink-0" />

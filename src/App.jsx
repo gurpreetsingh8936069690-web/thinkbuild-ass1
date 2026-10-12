@@ -11,6 +11,7 @@ import ClubPage from './pages/ClubPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { ThemeProvider } from './context/ThemeContext';
 
 // ScrollToTop component to reset viewport or scroll to hash element
 function ScrollToTop() {
@@ -39,25 +40,27 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 relative">
-        <Header />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="/tests" element={<TestsPage />} />
-            <Route path="/club" element={<ClubPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:id" element={<BlogPostPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200 relative">
+          <Header />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/tests" element={<TestsPage />} />
+              <Route path="/club" element={<ClubPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:id" element={<BlogPostPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

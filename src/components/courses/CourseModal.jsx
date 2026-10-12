@@ -23,11 +23,11 @@ export default function CourseModal({ course, isOpen, onClose }) {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       <div 
-        className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden my-8 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden my-8 max-h-[90vh] flex flex-col transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-brand-900 to-brand-700 text-white p-6 sm:p-8 flex-shrink-0">
+        <div className="relative bg-gradient-to-r from-brand-900 to-brand-700 dark:from-slate-900 dark:to-brand-900 text-white p-6 sm:p-8 flex-shrink-0">
           <button
             onClick={onClose}
             className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"
@@ -61,27 +61,27 @@ export default function CourseModal({ course, isOpen, onClose }) {
         </div>
 
         {/* Scrollable Content */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1 text-slate-700">
+        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1 text-slate-700 dark:text-slate-300">
           {/* Target Audience & Promise */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {course.targetAudience && (
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase text-brand-800 tracking-wider mb-1.5">
-                  <Users className="w-4 h-4 text-brand-600" />
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase text-brand-800 dark:text-brand-300 tracking-wider mb-1.5">
+                  <Users className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                   Target Audience
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {course.targetAudience}
                 </p>
               </div>
             )}
             {course.promise && (
-              <div className="p-4 rounded-xl bg-teal-50/60 border border-teal-200/70">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase text-teal-800 tracking-wider mb-1.5">
-                  <Target className="w-4 h-4 text-teal-600" />
+              <div className="p-4 rounded-xl bg-teal-50/60 dark:bg-teal-950/40 border border-teal-200/70 dark:border-teal-800/60">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase text-teal-800 dark:text-teal-300 tracking-wider mb-1.5">
+                  <Target className="w-4 h-4 text-teal-600 dark:text-teal-400" />
                   Our Learning Promise
                 </div>
-                <p className="text-sm text-teal-900 leading-relaxed font-medium">
+                <p className="text-sm text-teal-900 dark:text-teal-200 leading-relaxed font-medium">
                   {course.promise}
                 </p>
               </div>
@@ -91,13 +91,13 @@ export default function CourseModal({ course, isOpen, onClose }) {
           {/* Highlights */}
           {course.highlights && course.highlights.length > 0 && (
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-teal-600" />
+              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400" />
                 Course Highlights & Inclusions
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {course.highlights.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-700">
+                  <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 flex-shrink-0" />
                     <span>{item}</span>
                   </div>
@@ -109,26 +109,26 @@ export default function CourseModal({ course, isOpen, onClose }) {
           {/* Detailed Module Syllabus */}
           {course.moduleDetails && course.moduleDetails.length > 0 && (
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-900 mb-4 flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-brand-600" />
+              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 Detailed Curriculum & Topics
               </h4>
               <div className="space-y-3">
                 {course.moduleDetails.map((module, mIdx) => (
-                  <div key={mIdx} className="border border-slate-200 rounded-xl p-4 bg-white hover:border-brand-200 transition-colors">
+                  <div key={mIdx} className="border border-slate-200 dark:border-slate-800 rounded-xl p-4 bg-white dark:bg-slate-800/80 hover:border-brand-200 dark:hover:border-slate-700 transition-colors">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                      <span className="font-bold text-slate-900 text-sm">
+                      <span className="font-bold text-slate-900 dark:text-white text-sm">
                         {module.title}
                       </span>
                       {module.duration && (
-                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200">
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
                           {module.duration}
                         </span>
                       )}
                     </div>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1">
                       {module.topics.map((topic, tIdx) => (
-                        <li key={tIdx} className="flex items-start gap-2 text-xs text-slate-600">
+                        <li key={tIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
                           <span className="text-brand-500 font-bold">•</span>
                           <span>{topic}</span>
                         </li>
@@ -142,14 +142,14 @@ export default function CourseModal({ course, isOpen, onClose }) {
         </div>
 
         {/* Footer CTAs */}
-        <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 flex-shrink-0">
-          <div className="text-xs text-slate-500 text-center sm:text-left">
+        <div className="p-4 sm:p-6 bg-slate-50 dark:bg-slate-800/90 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 flex-shrink-0">
+          <div className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-left">
             Need customized batch timing? Talk to our mentors directly.
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <button
               onClick={onClose}
-              className="w-full sm:w-auto px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+              className="w-full sm:w-auto px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               Close
             </button>

@@ -11,7 +11,9 @@ import {
   MessageSquare, 
   Info,
   Calendar,
-  AlertCircle
+  AlertCircle,
+  Navigation,
+  Compass
 } from 'lucide-react';
 import { contactData } from '../data/contactData';
 import { adultCourses, kidsCourses } from '../data/coursesData';
@@ -102,13 +104,13 @@ export default function ContactPage() {
     <div className="py-10 sm:py-16 space-y-16">
       {/* Page Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-800 border border-brand-200 inline-block">
+        <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800 inline-block">
           Get in Touch
         </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Contact The Consistent Academy
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
           Reach out directly to Vidya Wankhade and our course advisory team in Pune. We are here to answer all your queries regarding course curriculum, batch timings, and IELTS preparation.
         </p>
       </section>
@@ -117,21 +119,21 @@ export default function ContactPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Validated Enquiry Form */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
-            <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
+          <div className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-colors">
+            <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-100 dark:border-slate-800">
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                   Send an Enquiry or Consultation Request
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
                   Fill in your details and target requirements below.
                 </p>
               </div>
             </div>
 
             {/* Prototype Demo Notice */}
-            <div className="mb-6 p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-              <Info className="w-4 h-4 text-amber-700 mt-0.5 flex-shrink-0" />
+            <div className="mb-6 p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-xs text-amber-900 dark:text-amber-300 flex items-start gap-2.5">
+              <Info className="w-4 h-4 text-amber-700 dark:text-amber-400 mt-0.5 flex-shrink-0" />
               <span>
                 <strong>Demo Notice:</strong> This prototype runs client-side validation. Submissions generate an instant demo reference ticket and will not write to a remote production database without backend deployment.
               </span>
@@ -140,7 +142,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -149,14 +151,14 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. Ninoshka Deshmukh"
-                  className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 ${
+                  className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 ${
                     errors.name 
-                      ? 'border-red-400 focus:ring-red-300 bg-red-50/20' 
-                      : 'border-slate-200 focus:ring-brand-400 focus:border-brand-600 bg-slate-50/50'
+                      ? 'border-red-400 dark:border-red-500 focus:ring-red-300 bg-red-50/20 dark:bg-red-950/20' 
+                      : 'border-slate-200 dark:border-slate-700 focus:ring-brand-400 focus:border-brand-600 dark:focus:border-brand-400 bg-slate-50/50 dark:bg-slate-800/80'
                   }`}
                 />
                 {errors.name && (
-                  <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+                  <p className="text-xs text-red-600 dark:text-red-400 mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3.5 h-3.5" />
                     {errors.name}
                   </p>
@@ -166,7 +168,7 @@ export default function ContactPage() {
               {/* Email & Phone Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -175,14 +177,14 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="name@example.com"
-                    className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 ${
+                    className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 ${
                       errors.email 
-                        ? 'border-red-400 focus:ring-red-300 bg-red-50/20' 
-                        : 'border-slate-200 focus:ring-brand-400 focus:border-brand-600 bg-slate-50/50'
+                        ? 'border-red-400 dark:border-red-500 focus:ring-red-300 bg-red-50/20 dark:bg-red-950/20' 
+                        : 'border-slate-200 dark:border-slate-700 focus:ring-brand-400 focus:border-brand-600 dark:focus:border-brand-400 bg-slate-50/50 dark:bg-slate-800/80'
                     }`}
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-red-600 dark:text-red-400 mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3.5 h-3.5" />
                       {errors.email}
                     </p>
@@ -190,7 +192,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Phone / WhatsApp Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -199,14 +201,14 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 98765 43210"
-                    className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 ${
+                    className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 ${
                       errors.phone 
-                        ? 'border-red-400 focus:ring-red-300 bg-red-50/20' 
-                        : 'border-slate-200 focus:ring-brand-400 focus:border-brand-600 bg-slate-50/50'
+                        ? 'border-red-400 dark:border-red-500 focus:ring-red-300 bg-red-50/20 dark:bg-red-950/20' 
+                        : 'border-slate-200 dark:border-slate-700 focus:ring-brand-400 focus:border-brand-600 dark:focus:border-brand-400 bg-slate-50/50 dark:bg-slate-800/80'
                     }`}
                   />
                   {errors.phone && (
-                    <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-red-600 dark:text-red-400 mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3.5 h-3.5" />
                       {errors.phone}
                     </p>
@@ -217,17 +219,17 @@ export default function ContactPage() {
               {/* Course Selector & Preferred Time */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Course of Interest <span className="text-red-500">*</span>
                   </label>
                   <select
                     name="course"
                     value={formData.course}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 focus:outline-none focus:ring-2 ${
+                    className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 ${
                       errors.course 
-                        ? 'border-red-400 focus:ring-red-300 bg-red-50/20' 
-                        : 'border-slate-200 focus:ring-brand-400 focus:border-brand-600 bg-slate-50/50'
+                        ? 'border-red-400 dark:border-red-500 focus:ring-red-300 bg-red-50/20 dark:bg-red-950/20' 
+                        : 'border-slate-200 dark:border-slate-700 focus:ring-brand-400 focus:border-brand-600 dark:focus:border-brand-400 bg-slate-50/50 dark:bg-slate-800/80'
                     }`}
                   >
                     <option value="">-- Select a Course --</option>
@@ -247,7 +249,7 @@ export default function ContactPage() {
                     </optgroup>
                   </select>
                   {errors.course && (
-                    <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-red-600 dark:text-red-400 mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3.5 h-3.5" />
                       {errors.course}
                     </p>
@@ -255,14 +257,14 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Preferred Batch Time
                   </label>
                   <select
                     name="preferredTime"
                     value={formData.preferredTime}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-600"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/80 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-600 dark:focus:border-brand-400"
                   >
                     <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM - 1:00 PM)</option>
                     <option value="Afternoon (2:00 PM - 5:00 PM)">Afternoon (2:00 PM - 5:00 PM)</option>
@@ -274,7 +276,7 @@ export default function ContactPage() {
 
               {/* Message / Learning Goals */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                   Your Goals & Timeline <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -283,14 +285,14 @@ export default function ContactPage() {
                   value={formData.learningGoals}
                   onChange={handleChange}
                   placeholder="Tell us about your target IELTS band score, exam date, destination country, or specific communication challenges..."
-                  className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 resize-none ${
+                  className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 resize-none ${
                     errors.learningGoals 
-                      ? 'border-red-400 focus:ring-red-300 bg-red-50/20' 
-                      : 'border-slate-200 focus:ring-brand-400 focus:border-brand-600 bg-slate-50/50'
+                      ? 'border-red-400 dark:border-red-500 focus:ring-red-300 bg-red-50/20 dark:bg-red-950/20' 
+                      : 'border-slate-200 dark:border-slate-700 focus:ring-brand-400 focus:border-brand-600 dark:focus:border-brand-400 bg-slate-50/50 dark:bg-slate-800/80'
                   }`}
                 />
                 {errors.learningGoals && (
-                  <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+                  <p className="text-xs text-red-600 dark:text-red-400 mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3.5 h-3.5" />
                     {errors.learningGoals}
                   </p>
@@ -403,11 +405,38 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Google Maps Embed */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm p-2">
-              <div className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden bg-slate-100">
+            {/* Google Maps & Exact Institute Location Card */}
+            <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/90 dark:border-slate-800 shadow-sm transition-colors p-5 sm:p-6 space-y-4">
+              <div className="flex items-start justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div className="space-y-1">
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800 inline-flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-brand-600 dark:text-brand-400" />
+                    Exact Institute Location
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                    {contactData.academyName}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+                    {contactData.address}
+                  </p>
+                </div>
+              </div>
+
+              {/* Landmark & Access Note */}
+              <div className="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-200/70 dark:border-slate-700/60 space-y-1 text-xs">
+                <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-semibold">
+                  <Compass className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+                  <span>Landmark: {contactData.landmark} (PIN: {contactData.pinCode})</span>
+                </div>
+                <p className="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed pl-5">
+                  {contactData.directionsHint}
+                </p>
+              </div>
+
+              {/* Interactive Google Maps Embed with Pinned Location */}
+              <div className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-inner">
                 <iframe
-                  title="The Consistent Academy Pune Location"
+                  title="The Consistent Academy Pune Pinned Location"
                   src={contactData.googleMapsEmbedUrl}
                   width="100%"
                   height="100%"
@@ -418,16 +447,27 @@ export default function ContactPage() {
                   className="w-full h-full"
                 ></iframe>
               </div>
-              <div className="p-3 text-center">
+
+              {/* Action Buttons for Easy Navigation */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                 <a
                   href={contactData.googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-bold text-brand-700 hover:text-brand-800 inline-flex items-center gap-1.5"
+                  className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700 text-white font-bold text-xs shadow-sm transition-all duration-200 hover:scale-[1.02]"
                 >
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>Get Driving Directions to Pune Academy</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <Navigation className="w-3.5 h-3.5" />
+                  <span>Get Driving Directions</span>
+                </a>
+                <a
+                  href={contactData.googleMapsSearchUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition-all duration-200"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+                  <span>Open in Google Maps</span>
+                  <ExternalLink className="w-3 h-3 text-slate-400" />
                 </a>
               </div>
             </div>
@@ -438,49 +478,49 @@ export default function ContactPage() {
       {/* Submission Success Confirmation Modal */}
       {submittedData && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 space-y-5 text-center">
-            <div className="w-16 h-16 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 dark:border-slate-800 space-y-5 text-center transition-colors">
+            <div className="w-16 h-16 rounded-full bg-teal-100 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
             <div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-800 uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 uppercase tracking-wider border border-brand-200 dark:border-brand-800">
                 Ref: {submittedData.referenceId}
               </span>
-              <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mt-2">
                 Enquiry Received Successfully!
               </h3>
-              <p className="text-sm text-slate-600 mt-1">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                 Thank you, <strong>{submittedData.name}</strong>. Our academic team at The Consistent Academy will review your goals and contact you shortly.
               </p>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-4 text-left text-xs space-y-2 border border-slate-200">
+            <div className="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-4 text-left text-xs space-y-2 border border-slate-200 dark:border-slate-700">
               <div className="flex justify-between">
-                <span className="text-slate-500">Program:</span>
-                <span className="font-bold text-slate-800">{submittedData.course}</span>
+                <span className="text-slate-500 dark:text-slate-400">Program:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">{submittedData.course}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Contact:</span>
-                <span className="font-bold text-slate-800">{submittedData.phone}</span>
+                <span className="text-slate-500 dark:text-slate-400">Contact:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">{submittedData.phone}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Time Preference:</span>
-                <span className="font-bold text-slate-800">{submittedData.preferredTime}</span>
+                <span className="text-slate-500 dark:text-slate-400">Time Preference:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">{submittedData.preferredTime}</span>
               </div>
             </div>
 
             <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <a
                 href={contactData.phoneHref}
-                className="flex-1 py-3 px-4 rounded-xl bg-brand-700 text-white font-bold text-sm hover:bg-brand-800 transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-3 px-4 rounded-xl bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Now: {contactData.phone}</span>
               </a>
               <button
                 onClick={() => setSubmittedData(null)}
-                className="py-3 px-6 rounded-xl border border-slate-200 text-slate-700 font-semibold text-sm hover:bg-slate-100 transition-colors"
+                className="py-3 px-6 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 Close
               </button>
