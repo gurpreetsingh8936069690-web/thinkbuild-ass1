@@ -37,22 +37,22 @@ export default function ClubPage() {
     <div className="py-10 sm:py-16 space-y-16 sm:space-y-24">
       {/* Hero Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-800 border border-brand-200">
-          <Award className="w-4 h-4 text-brand-600" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+          <Award className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{clubData.badge}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
           Consistent Communicators Club
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
           {clubData.description}
         </p>
 
         {/* Established Partner Callout */}
-        <div className="pt-2 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500">
-          <Building2 className="w-4 h-4 text-teal-600" />
+        <div className="pt-2 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+          <Building2 className="w-4 h-4 text-teal-600 dark:text-teal-400" />
           <span>In Academic Partnership with {clubData.establishedPartner}</span>
         </div>
       </section>
@@ -85,17 +85,17 @@ export default function ClubPage() {
           {clubData.pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-7 border border-slate-200 shadow-xs hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-8 rounded-lg bg-brand-100 text-brand-800 font-extrabold text-sm flex items-center justify-center">
+                <span className="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200/50 dark:border-brand-800 font-extrabold text-sm flex items-center justify-center">
                   0{idx + 1}
                 </span>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   {pillar.title}
                 </h3>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed pl-11">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-11">
                 {pillar.desc}
               </p>
             </div>
@@ -104,7 +104,7 @@ export default function ClubPage() {
       </section>
 
       {/* Chapter Roles & Hierarchy */}
-      <section className="bg-slate-50 py-16 sm:py-20 border-y border-slate-200">
+      <section className="bg-slate-50 dark:bg-slate-950/60 py-16 sm:py-20 border-y border-slate-200 dark:border-slate-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Leadership Structure"
@@ -116,15 +116,15 @@ export default function ClubPage() {
             {clubData.roles.map((r, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs"
+                className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-xs"
               >
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800 flex items-center justify-center mb-4">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-base mb-1">
+                <h4 className="font-bold text-slate-900 dark:text-white text-base mb-1">
                   {r.name}
                 </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {r.desc}
                 </p>
               </div>
@@ -135,21 +135,21 @@ export default function ClubPage() {
 
       {/* Join the Club Interactive Demo Form */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-md space-y-6">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-md space-y-6 transition-colors">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200 inline-block">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200 dark:border-brand-800 inline-block">
               Membership Enrolment
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
               Join Consistent Communicators Club
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               Available to undergraduate, postgraduate students and campus partner institutions in Pune.
             </p>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-            <Info className="w-4 h-4 text-amber-700 mt-0.5 flex-shrink-0" />
+          <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5">
+            <Info className="w-4 h-4 text-amber-700 dark:text-amber-400 mt-0.5 flex-shrink-0" />
             <span>
               <strong>Demo Registration:</strong> Submitting this form tests the simulated membership pipeline for CC Club college chapters.
             </span>
@@ -159,7 +159,7 @@ export default function ClubPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                     Student Full Name *
                   </label>
                   <input
@@ -168,11 +168,11 @@ export default function ClubPage() {
                     value={memberForm.name}
                     onChange={(e) => setMemberForm({ ...memberForm, name: e.target.value })}
                     placeholder="e.g. Atharv Kulkarni"
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:ring-2 focus:ring-brand-400 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm bg-slate-50/50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-brand-400 focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                     College / University Email *
                   </label>
                   <input
@@ -181,20 +181,20 @@ export default function ClubPage() {
                     value={memberForm.email}
                     onChange={(e) => setMemberForm({ ...memberForm, email: e.target.value })}
                     placeholder="student@college.edu"
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:ring-2 focus:ring-brand-400 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm bg-slate-50/50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-brand-400 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                     Institution / Chapter
                   </label>
                   <select
                     value={memberForm.college}
                     onChange={(e) => setMemberForm({ ...memberForm, college: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm bg-slate-50/50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
                     <option value="iFEEL">iFEEL Campus</option>
                     <option value="Pune University Affiliated">Pune University</option>
@@ -202,13 +202,13 @@ export default function ClubPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                     Applying As
                   </label>
                   <select
                     value={memberForm.role}
                     onChange={(e) => setMemberForm({ ...memberForm, role: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm bg-slate-50/50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
                     <option value="Student Member">Student Member</option>
                     <option value="Team Leader">Team Leader</option>
@@ -216,13 +216,13 @@ export default function ClubPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                     Primary Goal
                   </label>
                   <select
                     value={memberForm.speechInterest}
                     onChange={(e) => setMemberForm({ ...memberForm, speechInterest: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50/50"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm bg-slate-50/50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
                     <option value="Extempore & Impromptu">Extempore & Impromptu</option>
                     <option value="Campus Placement GD">Placement GD Preparation</option>
@@ -242,20 +242,20 @@ export default function ClubPage() {
               </Button>
             </form>
           ) : (
-            <div className="p-6 rounded-2xl bg-teal-50 border border-teal-200 text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-teal-200 text-teal-800 flex items-center justify-center mx-auto">
+            <div className="p-6 rounded-2xl bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-center space-y-3">
+              <div className="w-12 h-12 rounded-full bg-teal-200 dark:bg-teal-900 text-teal-800 dark:text-teal-200 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 Welcome to Consistent Communicators Club, {memberForm.name}!
               </h3>
-              <p className="text-xs text-slate-600 max-w-md mx-auto">
+              <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto">
                 Your registration ticket for <strong>{memberForm.college} Chapter ({memberForm.role})</strong> has been verified. You will receive session reminders via WhatsApp.
               </p>
               <button
                 type="button"
                 onClick={() => setRegistered(false)}
-                className="text-xs font-bold text-teal-700 underline"
+                className="text-xs font-bold text-teal-700 dark:text-teal-300 underline"
               >
                 Register Another Student
               </button>
