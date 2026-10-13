@@ -6,7 +6,9 @@ export default function SectionHeading({
   subtitle,
   align = 'center',
   className = '',
-  light = false
+  light = false,
+  titleClassName = '',
+  subtitleClassName = ''
 }) {
   const isCenter = align === 'center';
 
@@ -23,13 +25,13 @@ export default function SectionHeading({
         </div>
       )}
       <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight ${
-        light ? 'text-white' : 'text-slate-900 dark:text-white'
+        titleClassName || (light ? 'text-white' : 'text-slate-900 dark:text-white')
       }`}>
         {title}
       </h2>
       {subtitle && (
         <p className={`mt-4 text-base sm:text-lg leading-relaxed ${
-          light ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300'
+          subtitleClassName || (light ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300')
         }`}>
           {subtitle}
         </p>

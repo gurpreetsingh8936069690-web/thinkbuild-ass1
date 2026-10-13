@@ -20,9 +20,9 @@ export default function Button({
   const variants = {
     primary: "bg-brand-700 hover:bg-brand-800 text-white shadow-sm hover:shadow focus:ring-brand-500",
     secondary: "bg-teal-600 hover:bg-teal-700 text-white shadow-sm hover:shadow focus:ring-teal-400",
-    accent: "bg-brand-100 hover:bg-brand-200 text-brand-900 focus:ring-brand-400",
-    outline: "border-2 border-slate-200 hover:border-brand-600 hover:bg-brand-50 text-slate-700 hover:text-brand-700 focus:ring-brand-400",
-    ghost: "text-slate-600 hover:text-brand-700 hover:bg-slate-100 focus:ring-brand-400",
+    accent: "bg-brand-100 dark:bg-brand-950/80 hover:bg-brand-200 dark:hover:bg-brand-900 text-brand-900 dark:text-brand-200 focus:ring-brand-400 border border-brand-200/50 dark:border-brand-800",
+    outline: "border-2 border-slate-300 dark:border-slate-600 hover:border-brand-600 dark:hover:border-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 hover:text-brand-700 dark:hover:text-white focus:ring-brand-400 bg-white/50 dark:bg-slate-900/80 shadow-xs",
+    ghost: "text-slate-600 dark:text-slate-300 hover:text-brand-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-brand-400",
     white: "bg-white text-brand-800 hover:bg-slate-100 shadow-sm focus:ring-white"
   };
 

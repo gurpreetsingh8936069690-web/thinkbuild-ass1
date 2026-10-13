@@ -11,7 +11,8 @@ import {
   BookOpen, 
   ChevronRight,
   TrendingUp,
-  Brain
+  Brain,
+  X
 } from 'lucide-react';
 import { testsData } from '../data/testsData';
 import SectionHeading from '../components/common/SectionHeading';
@@ -215,31 +216,108 @@ export default function TestsPage() {
                 {currentQuestion.options.map((opt, idx) => {
                   const optText = typeof opt === 'string' ? opt : opt.text;
                   const optStyle = typeof opt === 'object' ? opt.style : null;
-                  const isSelected = selectedAnswers[currentQuestion.id]?.optionIndex === idx;
+                  const userAns = selectedAnswers[currentQuestion.id];
+                  const hasAnswered = userAns !== undefined;
+                  const isSelected = userAns?.optionIndex === idx;
+                  const hasCorrectKey = currentQuestion.correctIndex !== undefined;
+                  const isCorrect = hasCorrectKey && idx === currentQuestion.correctIndex;
+                  const isUserWrong = hasCorrectKey && hasAnswered && isSelected && !isCorrect;
+
+                  let optionStyles = "border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300";
+                  let badgeStyles = "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300";
+
+                  if (hasAnswered) {
+                    if (hasCorrectKey) {
+                      if (isCorrect) {
+                        // Green background for correct answer
+                        optionStyles = "border-2 border-emerald-500 bg-emerald-100 dark:bg-emerald-950/80 text-emerald-950 dark:text-emerald-100 font-semibold shadow-xs ring-1 ring-emerald-400";
+                        badgeStyles = "bg-emerald-600 text-white";
+                      } else if (isUserWrong) {
+                        // Red background for user's selected wrong answer
+                        optionStyles = "border-2 border-rose-500 bg-rose-100 dark:bg-rose-950/80 text-rose-950 dark:text-rose-100 font-semibold shadow-xs ring-1 ring-rose-400";
+                        badgeStyles = "bg-rose-600 text-white";
+                      } else {
+                        // Other non-selected options become dimmed
+                        optionStyles = "border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 text-slate-400 dark:text-slate-500 opacity-60";
+                        badgeStyles = "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500";
+                      }
+                    } else {
+                      // Leadership assessment: Selected option gets green background
+                      if (isSelected) {
+                        optionStyles = "border-2 border-emerald-500 bg-emerald-100 dark:bg-emerald-950/80 text-emerald-950 dark:text-emerald-100 font-semibold shadow-xs ring-1 ring-emerald-400";
+                        badgeStyles = "bg-emerald-600 text-white";
+                      } else {
+                        optionStyles = "border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 text-slate-400 dark:text-slate-500 opacity-60";
+                        badgeStyles = "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500";
+                      }
+                    }
+                  }
 
                   return (
                     <button
                       key={idx}
                       type="button"
                       onClick={() => handleSelectOption(currentQuestion.id, idx, optStyle)}
-                      className={`w-full p-4 rounded-xl border text-left text-sm transition-all flex items-start gap-3.5 ${
-                        isSelected
-                          ? 'border-brand-600 dark:border-brand-400 bg-brand-50/70 dark:bg-brand-950/60 text-brand-950 dark:text-white ring-1 ring-brand-500 font-semibold shadow-xs'
-                          : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
-                      }`}
+                      className={`w-full p-4 rounded-xl border text-left text-sm transition-all flex items-start justify-between gap-3.5 ${optionStyles}`}
                     >
-                      <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${
-                        isSelected 
-                          ? 'bg-brand-600 text-white' 
-                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
-                      }`}>
-                        {String.fromCharCode(65 + idx)}
-                      </span>
-                      <span className="leading-relaxed">{optText}</span>
+                      <div className="flex items-start gap-3.5 flex-1">
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 transition-colors ${badgeStyles}`}>
+                          {String.fromCharCode(65 + idx)}
+                        </span>
+                        <span className="leading-relaxed">{optText}</span>
+                      </div>
+
+                      {hasAnswered && hasCorrectKey && isCorrect && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-800 dark:text-emerald-200 bg-emerald-200/80 dark:bg-emerald-900/80 px-2.5 py-1 rounded-lg flex-shrink-0">
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Correct</span>
+                        </span>
+                      )}
+
+                      {hasAnswered && hasCorrectKey && isUserWrong && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-rose-800 dark:text-rose-200 bg-rose-200/80 dark:bg-rose-900/80 px-2.5 py-1 rounded-lg flex-shrink-0">
+                          <X className="w-3.5 h-3.5" />
+                          <span>Incorrect</span>
+                        </span>
+                      )}
+
+                      {hasAnswered && !hasCorrectKey && isSelected && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-800 dark:text-emerald-200 bg-emerald-200/80 dark:bg-emerald-900/80 px-2.5 py-1 rounded-lg flex-shrink-0">
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Selected</span>
+                        </span>
+                      )}
                     </button>
                   );
                 })}
               </div>
+
+              {/* Instant Answer Feedback Banner */}
+              {selectedAnswers[currentQuestion.id] !== undefined && currentQuestion.correctIndex !== undefined && (
+                <div className={`p-4 rounded-2xl border text-xs sm:text-sm flex items-start gap-3 transition-all ${
+                  selectedAnswers[currentQuestion.id].optionIndex === currentQuestion.correctIndex
+                    ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-100'
+                    : 'bg-rose-50 dark:bg-rose-950/60 border-rose-200 dark:border-rose-800 text-rose-950 dark:text-rose-100'
+                }`}>
+                  {selectedAnswers[currentQuestion.id].optionIndex === currentQuestion.correctIndex ? (
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+                  ) : (
+                    <X className="w-5 h-5 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5" />
+                  )}
+                  <div className="space-y-1">
+                    <p className="font-bold">
+                      {selectedAnswers[currentQuestion.id].optionIndex === currentQuestion.correctIndex
+                        ? 'Spot on! Correct answer.'
+                        : `Incorrect choice. The right answer is Option ${String.fromCharCode(65 + currentQuestion.correctIndex)}.`}
+                    </p>
+                    {currentQuestion.explanation && (
+                      <p className="text-xs opacity-90 leading-relaxed">
+                        <strong>Explanation:</strong> {currentQuestion.explanation}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Navigation Bar */}
               <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
@@ -276,14 +354,14 @@ export default function TestsPage() {
           ) : (
             /* Result Summary View */
             <div className="space-y-8 animate-fadeIn">
-              <div className="text-center space-y-3 pb-6 border-b border-slate-100">
-                <div className="w-16 h-16 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center mx-auto">
+              <div className="text-center space-y-3 pb-6 border-b border-slate-100 dark:border-slate-800">
+                <div className="w-16 h-16 rounded-full bg-brand-100 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 flex items-center justify-center mx-auto border border-brand-200 dark:border-brand-800">
                   <Award className="w-8 h-8" />
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-800">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
                   Assessment Complete
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
                   {activeTest.title} Report
                 </h3>
               </div>
@@ -291,14 +369,14 @@ export default function TestsPage() {
               {/* Leadership Results */}
               {results.type === 'leadership' ? (
                 <div className="space-y-6">
-                  <div className="bg-brand-50/80 rounded-2xl p-6 border border-brand-200 text-center">
-                    <span className="text-xs font-bold uppercase tracking-wider text-brand-700 block mb-1">
+                  <div className="bg-brand-50/80 dark:bg-brand-950/60 rounded-2xl p-6 border border-brand-200 dark:border-brand-800 text-center">
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 block mb-1">
                       Dominant Leadership Dimension
                     </span>
-                    <h4 className="text-2xl font-extrabold text-slate-900 capitalize">
+                    <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white capitalize">
                       {results.dominant} Style
                     </h4>
-                    <p className="text-sm text-slate-600 max-w-lg mx-auto mt-2 leading-relaxed">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 max-w-lg mx-auto mt-2 leading-relaxed">
                       {results.dominant === 'transformational' && "You lead through inspiring vision, elevated intellectual stimulation, and personal mentoring that rallies people towards high-impact collective goals."}
                       {results.dominant === 'democratic' && "You excel at building consensus, encouraging cross-functional debate, and creating psychological safety where all team voices contribute to decisions."}
                       {results.dominant === 'autocratic' && "You provide strong, unambiguous direction and thrive in fast-paced scenarios where rapid decisions and strict operational discipline are essential."}
@@ -307,12 +385,12 @@ export default function TestsPage() {
                   </div>
 
                   {/* Recommendation */}
-                  <div className="p-6 rounded-2xl bg-white border border-slate-200 space-y-3">
-                    <h5 className="font-bold text-slate-900 text-sm flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-brand-600" />
+                  <div className="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
+                    <h5 className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                       Recommended Program at The Consistent Academy:
                     </h5>
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                       To polish your executive gravitas, articulate strategic directives calmly, and lead boardroom discussions with authority, we recommend our <strong>Advanced English & Leadership Presence for Managers (12 Hours)</strong>.
                     </p>
                     <div className="pt-2">
@@ -325,17 +403,17 @@ export default function TestsPage() {
               ) : (
                 /* Grammar Results */
                 <div className="space-y-6">
-                  <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                  <div className="bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 text-center">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">
                       Your Test Score
                     </span>
-                    <div className="text-4xl font-black text-brand-700">
+                    <div className="text-4xl font-black text-brand-700 dark:text-brand-400">
                       {results.score} / {results.total}
                     </div>
-                    <p className="text-sm font-semibold text-slate-700 mt-1">
+                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 mt-1">
                       Proficiency: {results.percent}% Accuracy
                     </p>
-                    <p className="text-xs text-slate-500 mt-2">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                       {results.percent >= 80 
                         ? "Outstanding foundation! You are primed for Band 7.5+ in academic IELTS with targeted writing and speaking polish." 
                         : "Good baseline! With structured reinforcement in subjunctive structures, prepositions, and coherent connectives, your fluency and band score will accelerate rapidly."}
@@ -344,7 +422,7 @@ export default function TestsPage() {
 
                   {/* Question-by-Question Review with Explanations */}
                   <div>
-                    <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-3">
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider mb-3">
                       Review & Answer Explanations:
                     </h4>
                     <div className="space-y-3 max-h-96 overflow-y-auto pr-2">
@@ -352,23 +430,67 @@ export default function TestsPage() {
                         const userAns = selectedAnswers[q.id];
                         const isCorrect = userAns && userAns.optionIndex === q.correctIndex;
                         return (
-                          <div key={q.id} className="p-4 rounded-xl border border-slate-200 text-xs space-y-1.5 bg-white">
+                          <div key={q.id} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs space-y-3 bg-white dark:bg-slate-800/80">
                             <div className="flex items-start justify-between gap-2">
-                              <span className="font-bold text-slate-800">
+                              <span className="font-bold text-slate-800 dark:text-slate-100 text-sm">
                                 {idx + 1}. {q.question}
                               </span>
-                              <span className={`px-2 py-0.5 rounded font-bold uppercase text-[10px] ${
-                                isCorrect ? 'bg-teal-100 text-teal-800' : 'bg-red-100 text-red-800'
+                              <span className={`px-2.5 py-0.5 rounded font-bold uppercase text-[10px] flex-shrink-0 ${
+                                isCorrect ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300' : 'bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300'
                               }`}>
-                                {isCorrect ? 'Correct' : 'Incorrect'}
+                                {isCorrect ? '✓ Correct' : '✕ Incorrect'}
                               </span>
                             </div>
-                            <p className="text-slate-600">
-                              <strong className="text-slate-800">Correct Answer:</strong> {q.options[q.correctIndex]}
-                            </p>
+
+                            {/* Options with Green / Red backgrounds */}
+                            <div className="space-y-1.5 pt-1">
+                              {q.options.map((opt, optIdx) => {
+                                const isThisCorrect = optIdx === q.correctIndex;
+                                const isThisUserChoice = userAns && userAns.optionIndex === optIdx;
+
+                                let optBg = 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300';
+                                if (isThisCorrect) {
+                                  // Green background for correct answer option
+                                  optBg = 'bg-emerald-100 dark:bg-emerald-950/80 border-2 border-emerald-500 text-emerald-950 dark:text-emerald-100 font-semibold shadow-2xs';
+                                } else if (isThisUserChoice && !isThisCorrect) {
+                                  // Red background for user's incorrect choice
+                                  optBg = 'bg-rose-100 dark:bg-rose-950/80 border-2 border-rose-500 text-rose-950 dark:text-rose-100 font-semibold shadow-2xs';
+                                }
+
+                                return (
+                                  <div key={optIdx} className={`p-2.5 rounded-lg border text-xs flex items-center justify-between gap-2 ${optBg}`}>
+                                    <div className="flex items-center gap-2 flex-1">
+                                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 ${
+                                        isThisCorrect 
+                                          ? 'bg-emerald-600 text-white' 
+                                          : isThisUserChoice 
+                                            ? 'bg-rose-600 text-white' 
+                                            : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                                      }`}>
+                                        {String.fromCharCode(65 + optIdx)}
+                                      </span>
+                                      <span className="leading-snug">{typeof opt === 'string' ? opt : opt.text}</span>
+                                    </div>
+
+                                    {isThisCorrect && (
+                                      <span className="text-[10px] font-bold uppercase text-emerald-800 dark:text-emerald-200 bg-emerald-200/80 dark:bg-emerald-900/80 px-2 py-0.5 rounded flex-shrink-0">
+                                        Correct
+                                      </span>
+                                    )}
+
+                                    {isThisUserChoice && !isThisCorrect && (
+                                      <span className="text-[10px] font-bold uppercase text-rose-800 dark:text-rose-200 bg-rose-200/80 dark:bg-rose-900/80 px-2 py-0.5 rounded flex-shrink-0">
+                                        Your Choice
+                                      </span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+
                             {q.explanation && (
-                              <p className="text-slate-500 italic pt-1 border-t border-slate-100">
-                                Note: {q.explanation}
+                              <p className="text-slate-500 dark:text-slate-400 italic pt-1 border-t border-slate-100 dark:border-slate-700/60 text-[11px]">
+                                <strong>Explanation:</strong> {q.explanation}
                               </p>
                             )}
                           </div>

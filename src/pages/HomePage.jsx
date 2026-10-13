@@ -21,12 +21,13 @@ export default function HomePage() {
       <WhyChooseUs />
 
       {/* 3. Featured Courses Preview */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-100">
+      <section className="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Flagship Programs"
             title="Learn with Clarity & Confidence"
             subtitle="Explore our comprehensive curriculum designed to build practical communication fluency, examination mastery, and corporate success."
+            subtitleClassName="text-teal-700 dark:text-teal-300 font-medium"
           />
 
           {/* First 4 professional courses */}
@@ -37,7 +38,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-slate-500 text-sm mb-4">
+            <p className="text-teal-700 dark:text-teal-300 font-semibold text-sm mb-4">
               Explore 8 specialized adult modules and 5 dedicated young-learner programs.
             </p>
             <Button

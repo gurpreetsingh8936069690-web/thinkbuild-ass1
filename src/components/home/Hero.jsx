@@ -59,7 +59,7 @@ export default function Hero() {
                 to="/contact"
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto border-2 border-slate-300 dark:border-slate-500 text-slate-800 dark:text-white bg-white/80 dark:bg-slate-800/90 hover:bg-slate-100 dark:hover:bg-slate-700/90 hover:border-brand-500 dark:hover:border-teal-400 shadow-sm transition-all"
               >
                 Book Consultation
               </Button>
